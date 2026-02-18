@@ -30,10 +30,32 @@
 
 </head>
 
-<body class="min-h-screen max-w-md bg-base-200 mx-auto">
+<body class="bg-gray-900">
+    <div class="min-h-screen max-w-md bg-gray-400 mx-auto">
+        <div class="logo w-[200px] mx-auto pt-32 ">
+            <img src="assets/Logo-full.png" alt="">
+        </div>
 
-    <h1 class="text-3xl font-bold text-gray-700">Hello Developer</h1>
+        <div class="form pt-10">
+            <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow mx-auto rounded-2xl">
+                <div class="card-body">
+                    <fieldset class="fieldset">
+                        <label class="label text-neutral font-bold">Mobile Number</label>
+                        <input id="input-number" maxlength="11" minlength="11" type="text"
+                            class="input rounded-full bg-base-200" placeholder="Enter your 11 digit Number" required />
 
+                        <br>
+
+                        <label class="label text-neutral font-bold">4 Digit Pin</label>
+                        <input id="input-pin" type="password" maxlength="4" class="input rounded-full bg-base-200"
+                            placeholder="Enter 4 Digit Pin" required />
+                        <div></div>
+                        <button id="login-btn" class="btn btn-primary mt-4 rounded-full">Login</button>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
