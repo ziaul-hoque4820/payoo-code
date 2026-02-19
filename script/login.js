@@ -22,7 +22,7 @@ document.getElementById('login-btn').addEventListener('click', (event) => {
 
     if (contactNumber == '01234567890' && pin == '1234') {
         alert('Login Success!');
-        window.location.href = '#';
+        window.location.href = '/home.html';
     } else {
         alert("Invalid Mobile Number or Pin!");
     }
