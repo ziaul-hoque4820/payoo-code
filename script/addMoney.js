@@ -1,4 +1,4 @@
-import { getValueFromInput } from "./utils.js";
+import { getBalance, getValueFromInput, setBalance } from "./utils.js";
 
 document.getElementById('add-money-btn').addEventListener('click', (event) => {
     event.preventDefault();
@@ -12,11 +12,13 @@ document.getElementById('add-money-btn').addEventListener('click', (event) => {
 
     // 3. get add amount
     const amountStr = getValueFromInput("add-money-amount").trim();
-    console.log(amount);
 
     // 4. get pin number 
     const pin = getValueFromInput("add-money-pin").trim();
     console.log(pin);
+
+    const currentBalance = getBalance();
+    const newBalance = currentBalance + Number(amountStr);
 
     // 5. form validation
     if (bankAccount === "Select a Bank" || !accno || !amountStr || !pin) {
@@ -30,6 +32,18 @@ document.getElementById('add-money-btn').addEventListener('click', (event) => {
     }
     if (accno.length !== 11 || pin.length !== 4) {
         alert("Account Number must be 11 characters and Pin must be 4 digits.");
+        return;
+    }
+
+    if (pin == "1234") {
+        alert(`Add Money Success from
+        ${bankAccount}
+        at ${new Date().toISOString()};
+        Tk. ${amount}
+        `);
+        setBalance(newBalance)
+    } else {
+        alert("Invalid Pin");
         return;
     }
 })
