@@ -1,4 +1,4 @@
-import { getBalance, getValueFromInput } from "./utils.js";
+import { getBalance, getValueFromInput, setBalance } from "./utils.js";
 
 document.getElementById("cashout-btn").addEventListener('click', (event) => {
     event.preventDefault();
@@ -15,7 +15,7 @@ document.getElementById("cashout-btn").addEventListener('click', (event) => {
     }
 
     // 3. agent number and pin length valid
-    if (agentNumber !== 11 || pin !== 4) {
+    if (agentNumber.length !== 11 || pin.length !== 4) {
         alert("Agent Number must be 11 characters and Pin must be 4 digits.");
         return;
     }
@@ -30,5 +30,16 @@ document.getElementById("cashout-btn").addEventListener('click', (event) => {
     if (amount > currentBalance) {
         alert("You do not have enough balance.")
         return;
+    }
+
+    if (pin === '1234') {
+        const newBalance = currentBalance - amount;
+        setBalance(newBalance);
+        alert(`Successfully cashed out ${amount}. Your current balance is ${newBalance}.`)
+
+        document.getElementById('cashout-amount').value = "";
+        document.getElementById('cashout-pin').value = "";
+    } else {
+        alert("Invalid Pin");
     }
 })
