@@ -160,15 +160,14 @@
         </section>
 
         <!-- Send Money Section -->
-        <section id="cashout" class="w-11/12 mx-auto py-5">
+        <section id="cashout" class="w-11/12 mx-auto py-5 hidden">
             <h2 class="text-xl font-bold mb-5">Send Money</h2>
             <div class="card bg-base-100 w-full shadow rounded-2xl">
                 <div class="card-body">
                     <fieldset class="fieldset">
                         <label class="label text-neutral font-bold">User Account Number</label>
                         <input id="sendmoney-number" maxlength="11" minlength="11" type="text"
-                            class="input rounded-full bg-base-200 w-full" 
-                            placeholder="Enter 11 digit number" />
+                            class="input rounded-full bg-base-200 w-full" placeholder="Enter 11 digit number" />
 
                         <br>
 
@@ -184,6 +183,22 @@
                             class="input rounded-full bg-base-200 w-full" placeholder="Enter 4 digit pin number" />
                         <div></div>
                         <button id="sendmoney-btn" class="btn btn-primary mt-4 rounded-full">Send Now</button>
+                    </fieldset>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bonus Section -->
+        <section id="cashout" class="w-11/12 mx-auto py-5">
+            <h2 class="text-xl font-bold mb-5">Get Bonus</h2>
+            <div class="card bg-base-100 w-full shadow rounded-2xl">
+                <div class="card-body">
+                    <fieldset class="fieldset">
+                        <label class="label text-neutral font-bold">Enter Bonus Coupon</label>
+                        <input id="sendmoney-number" type="text"
+                            class="input rounded-full bg-base-200 w-full" placeholder="Enter your coupon" />
+
+                        <button id="sendmoney-btn" class="btn btn-primary mt-4 rounded-full">Get Bonus</button>
                     </fieldset>
                 </div>
             </div>
