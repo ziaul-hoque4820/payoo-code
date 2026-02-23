@@ -1,11 +1,11 @@
-import { getBalance, getValueFromInput } from "./utils.js";
+import { getBalance, getValueFromInput, setBalance } from "./utils.js";
 
 document.getElementById("sendmoney-btn").addEventListener('click', (event) => {
     event.preventDefault();
 
     // 1. get all input value
     const userAccNumber = getValueFromInput('sendmoney-number').trim();
-    const amountStr = getValueFromInput("sendmoney-number").trim();
+    const amountStr = getValueFromInput("sendmoney-amount").trim();
     const pin = getValueFromInput("sendmoney-pin").trim();
 
     // 2. check all input required
@@ -31,5 +31,17 @@ document.getElementById("sendmoney-btn").addEventListener('click', (event) => {
     if (amount > currentBalance) {
         alert("You do not have enough balance.")
         return;
+    }
+
+    if (pin === '1234') {
+        const newBalance = currentBalance - amount;
+        setBalance(newBalance);
+        alert(`Successfully Send Money ${amount}. Your current balance is ${newBalance}.`)
+
+        document.getElementById('sendmoney-number').value = "";
+        document.getElementById('sendmoney-amount').value = "";
+        document.getElementById('sendmoney-pin').value = "";
+    } else {
+        alert("Invalid Pin");
     }
 })
