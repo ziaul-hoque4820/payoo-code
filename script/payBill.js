@@ -35,4 +35,20 @@ document.getElementById('pay-bill-btn').addEventListener('click', (event) => {
         return;
     }
 
+    // 5. Pin verification and Balance update
+    if (pin === "1234") {
+        const newBalance = currentBalance - amount;
+        setBalance(newBalance);
+
+        alert(`Success! Your ${billerTarget} bill of ${amount} TK has been paid.`);
+
+        // 6. Reset input fields after successful payment
+        document.getElementById('pay-bill-number').value = "";
+        document.getElementById('pay-bill-amount').value = "";
+        document.getElementById('pay-bill-pin').value = "";
+        document.getElementById('pay-bill-target').selectedIndex = 0; // Reset Select box
+    } else {
+        alert("Invalid Pin Number!");
+    }
+
 });
