@@ -21,3 +21,31 @@ export const initBalance = () => {
     const balance = getBalance();
     document.getElementById("balance").innerText = balance;
 };
+
+// ─── Transactions (LocalStorage) ─────────────────────────────
+const TX_KEY = "payoo_transactions";
+
+export const getTransactions = () => {
+    return JSON.parse(localStorage.getItem(TX_KEY) || "[]");
+};
+
+export const addTransaction = ({ type, label, amount, sign }) => {
+    const transactions = getTransactions();
+    const newTx = {
+        id: Date.now(),
+        type,
+        label,
+        amount,
+        sign, // "+" or "-"
+        time: new Date().toLocaleString("en-BD", {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true,
+            day: "2-digit",
+            month: "short",
+        }),
+    };
+    transactions.unshift(newTx); // newest first
+    localStorage.setItem(TX_KEY, JSON.stringify(transactions));
+    renderTransactions();
+};
