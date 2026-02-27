@@ -205,7 +205,7 @@
         </section>
 
         <!-- Pay Bill Section -->
-        <section id="pay-bill" class="w-11/12 mx-auto py-5">
+        <section id="pay-bill" class="w-11/12 mx-auto py-5 hidden">
             <h2 class="text-xl font-bold mb-5">Pay Bill</h2>
             <div class="card bg-base-100 w-full shadow rounded-2xl">
                 <div class="card-body">
@@ -249,6 +249,89 @@
                 </div>
             </div>
         </section>
+
+        <!-- Transaction History Section -->
+        <section id="transaction-history" class="w-11/12 mx-auto py-5">
+            <!-- Header with View All Link -->
+            <div class="flex justify-between items-center mb-5">
+                <h2 class="text-xl font-bold">Transaction History</h2>
+                <a href="#" class="text-gray-500 hover:text-primary transition-colors">View All</a>
+            </div>
+
+            <!-- Transaction List Container -->
+            <div class="space-y-3">
+
+                <!-- Electricity Bill Item -->
+                <div
+                    class="flex items-center justify-between bg-base-100 p-4 rounded-2xl shadow-sm border border-gray-50">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-gray-100 p-3 rounded-full">
+                            <img src="https://img.icons8.com" alt="icon" class="w-6 h-6">
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-neutral">Electricity Bill</h3>
+                            <p class="text-xs text-gray-400">Today 01:44 AM</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-ghost btn-circle btn-sm">
+                        <i class="fa-solid fa-ellipsis-vertical text-gray-400"></i>
+                    </button>
+                </div>
+
+                <!-- Bank Deposit Item -->
+                <div
+                    class="flex items-center justify-between bg-base-100 p-4 rounded-2xl shadow-sm border border-gray-50">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-gray-100 p-3 rounded-full">
+                            <img src="https://img.icons8.com" alt="icon" class="w-6 h-6">
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-neutral">Bank Deposit</h3>
+                            <p class="text-xs text-gray-400">Today 01:44 AM</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-ghost btn-circle btn-sm">
+                        <i class="fa-solid fa-ellipsis-vertical text-gray-400"></i>
+                    </button>
+                </div>
+
+                <!-- Mobile Recharge Item -->
+                <div
+                    class="flex items-center justify-between bg-base-100 p-4 rounded-2xl shadow-sm border border-gray-50">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-gray-100 p-3 rounded-full">
+                            <img src="https://img.icons8.com" alt="icon" class="w-6 h-6">
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-neutral">Mobile Recharge</h3>
+                            <p class="text-xs text-gray-400">Today 01:44 AM</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-ghost btn-circle btn-sm">
+                        <i class="fa-solid fa-ellipsis-vertical text-gray-400"></i>
+                    </button>
+                </div>
+
+                <!-- Gas Bill Item -->
+                <div
+                    class="flex items-center justify-between bg-base-100 p-4 rounded-2xl shadow-sm border border-gray-50">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-gray-100 p-3 rounded-full">
+                            <img src="https://img.icons8.com" alt="icon" class="w-6 h-6">
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-neutral">Gas Bill</h3>
+                            <p class="text-xs text-gray-400">Today 01:44 AM</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-ghost btn-circle btn-sm">
+                        <i class="fa-solid fa-ellipsis-vertical text-gray-400"></i>
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
 
 
     </div>
