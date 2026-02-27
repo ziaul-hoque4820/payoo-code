@@ -1,19 +1,23 @@
-// Input value
+// ─── Input Helpers ───────────────────────────────────────────
 export const getValueFromInput = (id) => {
-    const input = document.getElementById(id);
-    const value = input.value;
-    return value;
-}
+    return document.getElementById(id)?.value ?? "";
+};
 
-// user Balance 
+// ─── Balance (LocalStorage) ───────────────────────────────────
+const BALANCE_KEY = "payoo_balance";
+const DEFAULT_BALANCE = 45000;
+
 export const getBalance = () => {
-    const balanceElement = document.getElementById("balance");
-    const balance = balanceElement.innerText;
-    return Number(balance);
-}
+    const stored = localStorage.getItem(BALANCE_KEY);
+    return stored !== null ? Number(stored) : DEFAULT_BALANCE;
+};
 
-// set user balance
 export const setBalance = (value) => {
-    const balanceElement = document.getElementById("balance");
-    balanceElement.innerText = value;
-}
+    localStorage.setItem(BALANCE_KEY, value);
+    document.getElementById("balance").innerText = value;
+};
+
+export const initBalance = () => {
+    const balance = getBalance();
+    document.getElementById("balance").innerText = balance;
+};
