@@ -96,3 +96,23 @@ export const renderTransactions = () => {
         </div>`;
     }).join("");
 };
+
+// ─── Toast Notification ───────────────────────────────────────
+export const showToast = (message, type = "success") => {
+    const existing = document.getElementById("payoo-toast");
+    if (existing) existing.remove();
+
+    const colors = {
+        success: "bg-green-500",
+        error: "bg-red-500",
+        info: "bg-blue-500",
+    };
+
+    const toast = document.createElement("div");
+    toast.id = "payoo-toast";
+    toast.className = `fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-2xl text-white text-sm font-medium shadow-lg transition-all duration-300 ${colors[type] || colors.success}`;
+    toast.innerText = message;
+
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
+};
