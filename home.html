@@ -32,7 +32,8 @@
 
 <body class="bg-gray-900">
     <div class="min-h-screen max-w-md bg-gray-400 mx-auto">
-        <!-- Header section -->
+
+        <!-- Header -->
         <header class="border-b-2 border-gray-300 sticky top-0 bg-base-200 z-10">
             <section class="w-11/12 mx-auto py-3 flex justify-between items-center">
                 <div class="left flex gap-1">
@@ -40,306 +41,242 @@
                         <img src="./assets/logo.png" alt="logo">
                     </div>
                     <div class="balance-info">
-                        <h2 class="text-2xl font-bold">$<span id="balance">45000</span></h2>
+                        <h2 class="text-2xl font-bold">৳<span id="balance">45000</span></h2>
                         <p class="text-neutral/50">Available Balance</p>
                     </div>
                 </div>
                 <div class="right">
-                    <a href="/index.html" class="btn btn-soft"><i class="fa-solid fa-arrow-right-from-bracket"></i>
-                        Logout</a>
+                    <a href="/index.html" class="btn btn-soft">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+                    </a>
                 </div>
-
             </section>
         </header>
 
-        <!-- Service Menu -->
-        <section class="w-11/12 mx-auto py-10 space-y-5">
-            <h2 class="text-3xl font-bold text-gray-100">Welcome to <span
-                    class="text-3xl font-bold text-violet-600">Pay</span><span class="text-primary">oo</span></h2>
-            <p class="text-neutral/80">Enjoy easy and convenient financial services with us. Cashout charge is low and
-            </p>
+        <!-- Main Content Wrapper -->
+        <div id="main-content">
 
-            <div class="buttons grid grid-cols-3 gap-3">
+            <!-- ── Home View ── -->
+            <div id="view-home">
+                <section class="w-11/12 mx-auto py-10 space-y-5">
+                    <h2 class="text-3xl font-bold text-gray-100">Welcome to
+                        <span class="text-violet-600">Pay</span><span class="text-primary">oo</span>
+                    </h2>
+                    <p class="text-neutral/80">Enjoy easy and convenient financial services.</p>
 
-                <button class="btn flex-col h-full py-4 btn-primary btn-soft">
-                    <img src="assets/opt-1.png" alt="">
-                    <p>Add Money</p>
-                </button>
-                <button class="btn flex-col h-full py-4 btn-primary btn-soft">
-                    <img src="assets/opt-2.png" alt="">
-                    <p>Cashout</p>
-                </button>
-                <button class="btn flex-col h-full py-4 btn-primary btn-soft">
-                    <img src="assets/opt-3.png" alt="">
-                    <p>Send Money</p>
-                </button>
-                <button class="btn flex-col h-full py-4 btn-primary btn-soft">
-                    <img src="assets/opt-4.png" alt="">
-                    <p>Get Bonus</p>
-                </button>
-                <button class="btn flex-col h-full py-4 btn-primary btn-soft">
-                    <img src="assets/opt-5.png" alt="">
-                    <p>Pay Bill</p>
-                </button>
-                <button class="btn flex-col h-full py-4 btn-primary btn-soft">
-                    <img src="assets/opt-6.png" alt="">
-                    <p>Transactions</p>
-                </button>
-            </div>
-        </section>
+                    <div class="buttons grid grid-cols-3 gap-3">
+                        <button data-target="view-addmoney"
+                            class="service-btn btn flex-col h-full py-4 btn-primary btn-soft">
+                            <img src="assets/opt-1.png" alt="">
+                            <p>Add Money</p>
+                        </button>
+                        <button data-target="view-cashout"
+                            class="service-btn btn flex-col h-full py-4 btn-primary btn-soft">
+                            <img src="assets/opt-2.png" alt="">
+                            <p>Cashout</p>
+                        </button>
+                        <button data-target="view-sendmoney"
+                            class="service-btn btn flex-col h-full py-4 btn-primary btn-soft">
+                            <img src="assets/opt-3.png" alt="">
+                            <p>Send Money</p>
+                        </button>
+                        <button data-target="view-bonus"
+                            class="service-btn btn flex-col h-full py-4 btn-primary btn-soft">
+                            <img src="assets/opt-4.png" alt="">
+                            <p>Get Bonus</p>
+                        </button>
+                        <button data-target="view-paybill"
+                            class="service-btn btn flex-col h-full py-4 btn-primary btn-soft">
+                            <img src="assets/opt-5.png" alt="">
+                            <p>Pay Bill</p>
+                        </button>
+                        <button data-target="view-transactions"
+                            class="service-btn btn flex-col h-full py-4 btn-primary btn-soft">
+                            <img src="assets/opt-6.png" alt="">
+                            <p>Transactions</p>
+                        </button>
+                    </div>
+                </section>
 
-        <!-- Add money section -->
-        <section id="add-money" class="w-11/12 mx-auto py-5 hidden">
-            <h2 class="text-xl font-bold mb-5">Add Money</h2>
-            <div class="card bg-base-100 w-full shadow rounded-2xl">
-                <div class="card-body">
-                    <fieldset class="fieldset">
-                        <label class="label text-neutral font-bold">Select Bank</label>
-
-                        <select id="add-money-bank" class="select w-full bg-base-200 rounded-full">
-                            <option disabled selected>Select a Bank</option>
-                            <option value="DBBL Bank">DBBL Bank</option>
-                            <option value="IBBL Bank">IBBL Bank</option>
-                            <option value="CITY Bank">City Bank</option>
-                        </select>
-                        <br>
-
-
-                        <label class="label text-neutral font-bold">Banbk Account Number</label>
-                        <input id="add-money-number" maxlength="11" minlength="11" type="text"
-                            class="input rounded-full bg-base-200 w-full" value="01234567890"
-                            placeholder="Enter Bank 11 digit Number" />
-
-                        <br>
-
-                        <label class="label text-neutral font-bold">Amount to Add</label>
-
-                        <input id="add-money-amount" type="number" class="input rounded-full bg-base-200 w-full"
-                            placeholder="Enter Amount to Add" />
-
-                        <br>
-
-                        <label class="label text-neutral font-bold">4 Digit Pin</label>
-                        <input id="add-money-pin" type="password" maxlength="4"
-                            class="input rounded-full bg-base-200 w-full" placeholder="Enter 4 Digit Pin" />
-                        <div></div>
-                        <button id="add-money-btn" class="btn btn-primary mt-4 rounded-full">Add Money</button>
-                    </fieldset>
-                </div>
-            </div>
-        </section>
-
-        <!-- Cash Out Section -->
-        <section id="cashout" class="w-11/12 mx-auto py-5 hidden">
-            <h2 class="text-xl font-bold mb-5">Cashout</h2>
-            <div class="card bg-base-100 w-full shadow rounded-2xl">
-                <div class="card-body">
-                    <fieldset class="fieldset">
-                        <label class="label text-neutral font-bold">Agent Number</label>
-                        <input id="cashout-number" maxlength="11" minlength="11" type="text"
-                            class="input rounded-full bg-base-200 w-full" value="01234567890"
-                            placeholder="Enter Agent 11 digit Number" />
-
-                        <br>
-
-                        <label class="label text-neutral font-bold">Amount</label>
-
-                        <input id="cashout-amount" type="number" class="input rounded-full bg-base-200 w-full"
-                            placeholder="Enter Amount for withdraw" />
-
-                        <br>
-
-                        <label class="label text-neutral font-bold">4 Digit Pin</label>
-                        <input id="cashout-pin" type="password" maxlength="4"
-                            class="input rounded-full bg-base-200 w-full" placeholder="Enter 4 Digit Pin" />
-                        <div></div>
-                        <button id="cashout-btn" class="btn btn-primary mt-4 rounded-full">WithDraw Money</button>
-                    </fieldset>
-                </div>
-            </div>
-        </section>
-
-        <!-- Send Money Section -->
-        <section id="cashout" class="w-11/12 mx-auto py-5 hidden">
-            <h2 class="text-xl font-bold mb-5">Send Money</h2>
-            <div class="card bg-base-100 w-full shadow rounded-2xl">
-                <div class="card-body">
-                    <fieldset class="fieldset">
-                        <label class="label text-neutral font-bold">User Account Number</label>
-                        <input id="sendmoney-number" maxlength="11" minlength="11" type="text"
-                            class="input rounded-full bg-base-200 w-full" placeholder="Enter 11 digit number" />
-
-                        <br>
-
-                        <label class="label text-neutral font-bold">Amount</label>
-
-                        <input id="sendmoney-amount" type="number" class="input rounded-full bg-base-200 w-full"
-                            placeholder="Enter amount to transfer" />
-
-                        <br>
-
-                        <label class="label text-neutral font-bold">Pin Number</label>
-                        <input id="sendmoney-pin" type="password" maxlength="4"
-                            class="input rounded-full bg-base-200 w-full" placeholder="Enter 4 digit pin number" />
-                        <div></div>
-                        <button id="sendmoney-btn" class="btn btn-primary mt-4 rounded-full">Send Now</button>
-                    </fieldset>
-                </div>
-            </div>
-        </section>
-
-        <!-- Bonus Section -->
-        <section id="cashout" class="w-11/12 mx-auto py-5 hidden">
-            <h2 class="text-xl font-bold mb-5">Get Bonus</h2>
-            <div class="card bg-base-100 w-full shadow rounded-2xl">
-                <div class="card-body">
-                    <fieldset class="fieldset">
-                        <label class="label text-neutral font-bold">Enter Bonus Coupon</label>
-                        <input id="bonus-cuopn" type="text" class="input rounded-full bg-base-200 w-full"
-                            placeholder="Enter your coupon" />
-
-                        <button id="get-cupon-btn" class="btn btn-primary mt-4 rounded-full">Get Bonus</button>
-                    </fieldset>
-                </div>
-            </div>
-        </section>
-
-        <!-- Pay Bill Section -->
-        <section id="pay-bill" class="w-11/12 mx-auto py-5 hidden">
-            <h2 class="text-xl font-bold mb-5">Pay Bill</h2>
-            <div class="card bg-base-100 w-full shadow rounded-2xl">
-                <div class="card-body">
-                    <fieldset class="fieldset">
-                        <!-- Select To Pay -->
-                        <label class="label text-neutral font-bold">Select To Pay</label>
-                        <select id="pay-bill-target" class="select w-full bg-base-200 rounded-full">
-                            <option disabled selected>Select back</option>
-                            <option value="Electricity">Electricity</option>
-                            <option value="Water">Water</option>
-                            <option value="Gas">Gas</option>
-                            <option value="Internet">Internet</option>
-                        </select>
-
-                        <br>
-
-                        <!-- Biller Account Number -->
-                        <label class="label text-neutral font-bold">Biller Account Number</label>
-                        <input id="pay-bill-number" maxlength="11" minlength="11" type="text"
-                            class="input rounded-full bg-base-200 w-full" placeholder="Enter account number" />
-
-                        <br>
-
-                        <!-- Amount to Pay -->
-                        <label class="label text-neutral font-bold">Amount to Pay</label>
-                        <input id="pay-bill-amount" type="number" class="input rounded-full bg-base-200 w-full"
-                            placeholder="Add Amount to pay" />
-
-                        <br>
-
-                        <!-- Pin Number -->
-                        <label class="label text-neutral font-bold">Pin Number</label>
-                        <input id="pay-bill-pin" type="password" maxlength="4"
-                            class="input rounded-full bg-base-200 w-full" placeholder="Enter 4 digit pin number" />
-
-                        <div></div>
-
-                        <!-- Pay Now Button -->
-                        <button id="pay-bill-btn" class="btn btn-primary mt-4 rounded-full">Pay Now</button>
-                    </fieldset>
-                </div>
-            </div>
-        </section>
-
-        <!-- Transaction History Section -->
-        <section id="transaction-history" class="w-11/12 mx-auto py-5">
-            <!-- Header with View All Link -->
-            <div class="flex justify-between items-center mb-5">
-                <h2 class="text-xl font-bold">Transaction History</h2>
-                <a href="#" class="text-gray-500 hover:text-primary transition-colors">View All</a>
+                <!-- Transaction History (home preview - last 3) -->
+                <section class="w-11/12 mx-auto py-5">
+                    <div class="flex justify-between items-center mb-5">
+                        <h2 class="text-xl font-bold">Recent Transactions</h2>
+                        <button data-target="view-transactions"
+                            class="service-btn text-sm text-primary hover:underline">
+                            View All
+                        </button>
+                    </div>
+                    <div id="tx-list" class="space-y-3"></div>
+                </section>
             </div>
 
-            <!-- Transaction List Container -->
-            <div class="space-y-3">
-
-                <!-- Electricity Bill Item -->
-                <div
-                    class="flex items-center justify-between bg-base-100 p-4 rounded-2xl shadow-sm border border-gray-50">
-                    <div class="flex items-center gap-4">
-                        <div class="bg-gray-100 p-3 rounded-full">
-                            <img src="https://img.icons8.com" alt="icon" class="w-6 h-6">
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-neutral">Electricity Bill</h3>
-                            <p class="text-xs text-gray-400">Today 01:44 AM</p>
+            <!-- ── Add Money View ── -->
+            <div id="view-addmoney" class="hidden">
+                <div class="w-11/12 mx-auto py-5">
+                    <button class="back-btn btn btn-ghost mb-4">
+                        <i class="fa-solid fa-arrow-left"></i> Back
+                    </button>
+                    <h2 class="text-xl font-bold mb-5">Add Money</h2>
+                    <div class="card bg-base-100 w-full shadow rounded-2xl">
+                        <div class="card-body">
+                            <fieldset class="fieldset">
+                                <label class="label text-neutral font-bold">Select Bank</label>
+                                <select id="add-money-bank" class="select w-full bg-base-200 rounded-full">
+                                    <option disabled selected>Select a Bank</option>
+                                    <option value="DBBL Bank">DBBL Bank</option>
+                                    <option value="IBBL Bank">IBBL Bank</option>
+                                    <option value="CITY Bank">City Bank</option>
+                                </select>
+                                <br>
+                                <label class="label text-neutral font-bold">Bank Account Number</label>
+                                <input id="add-money-number" maxlength="11" type="text"
+                                    class="input rounded-full bg-base-200 w-full" placeholder="Enter 11 digit Number" />
+                                <br>
+                                <label class="label text-neutral font-bold">Amount to Add</label>
+                                <input id="add-money-amount" type="number" class="input rounded-full bg-base-200 w-full"
+                                    placeholder="Enter Amount" />
+                                <br>
+                                <label class="label text-neutral font-bold">4 Digit Pin</label>
+                                <input id="add-money-pin" type="password" maxlength="4"
+                                    class="input rounded-full bg-base-200 w-full" placeholder="Enter 4 Digit Pin" />
+                                <button id="add-money-btn" class="btn btn-primary mt-4 rounded-full">Add Money</button>
+                            </fieldset>
                         </div>
                     </div>
-                    <button class="btn btn-ghost btn-circle btn-sm">
-                        <i class="fa-solid fa-ellipsis-vertical text-gray-400"></i>
-                    </button>
                 </div>
-
-                <!-- Bank Deposit Item -->
-                <div
-                    class="flex items-center justify-between bg-base-100 p-4 rounded-2xl shadow-sm border border-gray-50">
-                    <div class="flex items-center gap-4">
-                        <div class="bg-gray-100 p-3 rounded-full">
-                            <img src="https://img.icons8.com" alt="icon" class="w-6 h-6">
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-neutral">Bank Deposit</h3>
-                            <p class="text-xs text-gray-400">Today 01:44 AM</p>
-                        </div>
-                    </div>
-                    <button class="btn btn-ghost btn-circle btn-sm">
-                        <i class="fa-solid fa-ellipsis-vertical text-gray-400"></i>
-                    </button>
-                </div>
-
-                <!-- Mobile Recharge Item -->
-                <div
-                    class="flex items-center justify-between bg-base-100 p-4 rounded-2xl shadow-sm border border-gray-50">
-                    <div class="flex items-center gap-4">
-                        <div class="bg-gray-100 p-3 rounded-full">
-                            <img src="https://img.icons8.com" alt="icon" class="w-6 h-6">
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-neutral">Mobile Recharge</h3>
-                            <p class="text-xs text-gray-400">Today 01:44 AM</p>
-                        </div>
-                    </div>
-                    <button class="btn btn-ghost btn-circle btn-sm">
-                        <i class="fa-solid fa-ellipsis-vertical text-gray-400"></i>
-                    </button>
-                </div>
-
-                <!-- Gas Bill Item -->
-                <div
-                    class="flex items-center justify-between bg-base-100 p-4 rounded-2xl shadow-sm border border-gray-50">
-                    <div class="flex items-center gap-4">
-                        <div class="bg-gray-100 p-3 rounded-full">
-                            <img src="https://img.icons8.com" alt="icon" class="w-6 h-6">
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-neutral">Gas Bill</h3>
-                            <p class="text-xs text-gray-400">Today 01:44 AM</p>
-                        </div>
-                    </div>
-                    <button class="btn btn-ghost btn-circle btn-sm">
-                        <i class="fa-solid fa-ellipsis-vertical text-gray-400"></i>
-                    </button>
-                </div>
-
             </div>
-        </section>
 
+            <!-- ── Cashout View ── -->
+            <div id="view-cashout" class="hidden">
+                <div class="w-11/12 mx-auto py-5">
+                    <button class="back-btn btn btn-ghost mb-4">
+                        <i class="fa-solid fa-arrow-left"></i> Back
+                    </button>
+                    <h2 class="text-xl font-bold mb-5">Cashout</h2>
+                    <div class="card bg-base-100 w-full shadow rounded-2xl">
+                        <div class="card-body">
+                            <fieldset class="fieldset">
+                                <label class="label text-neutral font-bold">Agent Number</label>
+                                <input id="cashout-number" maxlength="11" type="text"
+                                    class="input rounded-full bg-base-200 w-full"
+                                    placeholder="Enter Agent 11 digit Number" />
+                                <br>
+                                <label class="label text-neutral font-bold">Amount</label>
+                                <input id="cashout-amount" type="number" class="input rounded-full bg-base-200 w-full"
+                                    placeholder="Enter Amount to withdraw" />
+                                <br>
+                                <label class="label text-neutral font-bold">4 Digit Pin</label>
+                                <input id="cashout-pin" type="password" maxlength="4"
+                                    class="input rounded-full bg-base-200 w-full" placeholder="Enter 4 Digit Pin" />
+                                <button id="cashout-btn" class="btn btn-primary mt-4 rounded-full">Withdraw
+                                    Money</button>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <!-- ── Send Money View ── -->
+            <div id="view-sendmoney" class="hidden">
+                <div class="w-11/12 mx-auto py-5">
+                    <button class="back-btn btn btn-ghost mb-4">
+                        <i class="fa-solid fa-arrow-left"></i> Back
+                    </button>
+                    <h2 class="text-xl font-bold mb-5">Send Money</h2>
+                    <div class="card bg-base-100 w-full shadow rounded-2xl">
+                        <div class="card-body">
+                            <fieldset class="fieldset">
+                                <label class="label text-neutral font-bold">User Account Number</label>
+                                <input id="sendmoney-number" maxlength="11" type="text"
+                                    class="input rounded-full bg-base-200 w-full" placeholder="Enter 11 digit number" />
+                                <br>
+                                <label class="label text-neutral font-bold">Amount</label>
+                                <input id="sendmoney-amount" type="number" class="input rounded-full bg-base-200 w-full"
+                                    placeholder="Enter amount to transfer" />
+                                <br>
+                                <label class="label text-neutral font-bold">Pin Number</label>
+                                <input id="sendmoney-pin" type="password" maxlength="4"
+                                    class="input rounded-full bg-base-200 w-full" placeholder="Enter 4 digit pin" />
+                                <button id="sendmoney-btn" class="btn btn-primary mt-4 rounded-full">Send Now</button>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <!-- ── Bonus View ── -->
+            <div id="view-bonus" class="hidden">
+                <div class="w-11/12 mx-auto py-5">
+                    <button class="back-btn btn btn-ghost mb-4">
+                        <i class="fa-solid fa-arrow-left"></i> Back
+                    </button>
+                    <h2 class="text-xl font-bold mb-5">Get Bonus</h2>
+                    <div class="card bg-base-100 w-full shadow rounded-2xl">
+                        <div class="card-body">
+                            <fieldset class="fieldset">
+                                <label class="label text-neutral font-bold">Enter Bonus Coupon</label>
+                                <input id="bonus-cuopn" type="text" class="input rounded-full bg-base-200 w-full"
+                                    placeholder="Enter your coupon" />
+                                <button id="get-cupon-btn" class="btn btn-primary mt-4 rounded-full">Get Bonus</button>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Pay Bill View ── -->
+            <div id="view-paybill" class="hidden">
+                <div class="w-11/12 mx-auto py-5">
+                    <button class="back-btn btn btn-ghost mb-4">
+                        <i class="fa-solid fa-arrow-left"></i> Back
+                    </button>
+                    <h2 class="text-xl font-bold mb-5">Pay Bill</h2>
+                    <div class="card bg-base-100 w-full shadow rounded-2xl">
+                        <div class="card-body">
+                            <fieldset class="fieldset">
+                                <label class="label text-neutral font-bold">Select To Pay</label>
+                                <select id="pay-bill-target" class="select w-full bg-base-200 rounded-full">
+                                    <option disabled selected>Select bill type</option>
+                                    <option value="Electricity">Electricity</option>
+                                    <option value="Water">Water</option>
+                                    <option value="Gas">Gas</option>
+                                    <option value="Internet">Internet</option>
+                                </select>
+                                <br>
+                                <label class="label text-neutral font-bold">Biller Account Number</label>
+                                <input id="pay-bill-number" maxlength="11" type="text"
+                                    class="input rounded-full bg-base-200 w-full" placeholder="Enter account number" />
+                                <br>
+                                <label class="label text-neutral font-bold">Amount to Pay</label>
+                                <input id="pay-bill-amount" type="number" class="input rounded-full bg-base-200 w-full"
+                                    placeholder="Enter amount" />
+                                <br>
+                                <label class="label text-neutral font-bold">Pin Number</label>
+                                <input id="pay-bill-pin" type="password" maxlength="4"
+                                    class="input rounded-full bg-base-200 w-full" placeholder="Enter 4 digit pin" />
+                                <button id="pay-bill-btn" class="btn btn-primary mt-4 rounded-full">Pay Now</button>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Transactions Full View ── -->
+            <div id="view-transactions" class="hidden">
+                <div class="w-11/12 mx-auto py-5">
+                    <button class="back-btn btn btn-ghost mb-4">
+                        <i class="fa-solid fa-arrow-left"></i> Back
+                    </button>
+                    <h2 class="text-xl font-bold mb-5">All Transactions</h2>
+                    <div id="tx-list-full" class="space-y-3"></div>
+                </div>
+            </div>
+
+        </div><!-- /main-content -->
     </div>
-    <script type="module" src="./script/payBill.js"></script>
-    <script type="module" src="./script/bonus.js"></script>
-    <script type="module" src="./script/sendMoney.js"></script>
-    <script type="module" src="./script/cashOut.js"></script>
-    <script type="module" src="./script/addMoney.js"></script>
+
+    <script type="module" src=""></script>
 </body>
 
 </html>
