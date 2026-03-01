@@ -47,11 +47,11 @@ const renderFullTransactions = () => {
     }
     list.innerHTML = transactions.map(tx => {
         const icons = {
-            addmoney:  { icon: "fa-building-columns", color: "text-green-500",  bg: "bg-green-100"  },
-            cashout:   { icon: "fa-money-bill-wave",  color: "text-red-500",    bg: "bg-red-100"    },
-            sendmoney: { icon: "fa-paper-plane",      color: "text-blue-500",   bg: "bg-blue-100"   },
-            bonus:     { icon: "fa-gift",             color: "text-yellow-500", bg: "bg-yellow-100" },
-            paybill:   { icon: "fa-file-invoice",     color: "text-purple-500", bg: "bg-purple-100" },
+            addmoney: { icon: "fa-building-columns", color: "text-green-500", bg: "bg-green-100" },
+            cashout: { icon: "fa-money-bill-wave", color: "text-red-500", bg: "bg-red-100" },
+            sendmoney: { icon: "fa-paper-plane", color: "text-blue-500", bg: "bg-blue-100" },
+            bonus: { icon: "fa-gift", color: "text-yellow-500", bg: "bg-yellow-100" },
+            paybill: { icon: "fa-file-invoice", color: "text-purple-500", bg: "bg-purple-100" },
         };
         const { icon, color, bg } = icons[tx.type] || { icon: "fa-circle", color: "text-gray-500", bg: "bg-gray-100" };
         const amountColor = tx.sign === "+" ? "text-green-600" : "text-red-500";
@@ -74,3 +74,34 @@ const renderFullTransactions = () => {
 // ─── Init ─────────────────────────────────────────────────────
 initBalance();
 renderTransactions(); // home preview
+
+// ─── Add Money ────────────────────────────────────────────────
+document.getElementById("add-money-btn").addEventListener("click", (e) => {
+    e.preventDefault();
+    const bank = getValueFromInput("add-money-bank");
+    const accno = getValueFromInput("add-money-number").trim();
+    const amountStr = getValueFromInput("add-money-amount").trim();
+    const pin = getValueFromInput("add-money-pin").trim();
+
+    if (bank === "Select a Bank" || !accno || !amountStr || !pin) {
+        return showToast("Please fill in all fields.", "error");
+    }
+    if (accno.length !== 11 || pin.length !== 4) {
+        return showToast("Account must be 11 digits, Pin must be 4 digits.", "error");
+    }
+    const amount = parseFloat(amountStr);
+    if (isNaN(amount) || amount <= 0) {
+        return showToast("Enter a valid amount.", "error");
+    }
+    if (pin !== "1234") return showToast("Invalid Pin!", "error");
+
+    const newBalance = getBalance() + amount;
+    setBalance(newBalance);
+    addTransaction({ type: "addmoney", label: `Add Money (${bank})`, amount, sign: "+" });
+    showToast(`৳${amount} added from ${bank}!`);
+
+    document.getElementById("add-money-number").value = "";
+    document.getElementById("add-money-amount").value = "";
+    document.getElementById("add-money-pin").value = "";
+    document.getElementById("add-money-bank").selectedIndex = 0;
+});
