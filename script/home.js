@@ -132,3 +132,31 @@ document.getElementById("cashout-btn").addEventListener("click", (e) => {
     document.getElementById("cashout-amount").value = "";
     document.getElementById("cashout-pin").value = "";
 });
+
+// ─── Send Money ───────────────────────────────────────────────
+document.getElementById("sendmoney-btn").addEventListener("click", (e) => {
+    e.preventDefault();
+    const userNum = getValueFromInput("sendmoney-number").trim();
+    const amountStr = getValueFromInput("sendmoney-amount").trim();
+    const pin = getValueFromInput("sendmoney-pin").trim();
+
+    if (!userNum || !amountStr || !pin) {
+        return showToast("Please fill in all fields.", "error");
+    }
+    if (userNum.length !== 11 || pin.length !== 4) {
+        return showToast("Number must be 11 digits, Pin must be 4 digits.", "error");
+    }
+    const amount = parseFloat(amountStr);
+    const currentBalance = getBalance();
+    if (isNaN(amount) || amount <= 0) return showToast("Enter a valid amount.", "error");
+    if (amount > currentBalance) return showToast("Insufficient balance!", "error");
+    if (pin !== "1234") return showToast("Invalid Pin!", "error");
+
+    setBalance(currentBalance - amount);
+    addTransaction({ type: "sendmoney", label: `Send Money to ${userNum}`, amount, sign: "-" });
+    showToast(`৳${amount} sent to ${userNum}!`);
+
+    document.getElementById("sendmoney-number").value = "";
+    document.getElementById("sendmoney-amount").value = "";
+    document.getElementById("sendmoney-pin").value = "";
+});
