@@ -160,3 +160,23 @@ document.getElementById("sendmoney-btn").addEventListener("click", (e) => {
     document.getElementById("sendmoney-amount").value = "";
     document.getElementById("sendmoney-pin").value = "";
 });
+
+// ─── Bonus ────────────────────────────────────────────────────
+document.getElementById("get-cupon-btn").addEventListener("click", (e) => {
+    e.preventDefault();
+    const coupon = getValueFromInput("bonus-cuopn").trim();
+
+    if (!coupon) return showToast("Please enter a coupon code.", "error");
+
+    let bonusAmount = 0;
+    if (coupon === "ZIAUL.DEV") bonusAmount = 1000;
+    else if (coupon === "DEVELOPER_ZIAUL") bonusAmount = 500;
+    else return showToast("Invalid Coupon Code!", "error");
+
+    const newBalance = getBalance() + bonusAmount;
+    setBalance(newBalance);
+    addTransaction({ type: "bonus", label: `Bonus Coupon (${coupon})`, amount: bonusAmount, sign: "+" });
+    showToast(`🎉 ৳${bonusAmount} bonus added!`);
+
+    document.getElementById("bonus-cuopn").value = "";
+});
