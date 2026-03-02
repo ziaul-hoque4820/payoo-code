@@ -105,3 +105,30 @@ document.getElementById("add-money-btn").addEventListener("click", (e) => {
     document.getElementById("add-money-pin").value = "";
     document.getElementById("add-money-bank").selectedIndex = 0;
 });
+
+// ─── Cashout ──────────────────────────────────────────────────
+document.getElementById("cashout-btn").addEventListener("click", (e) => {
+    e.preventDefault();
+    const agentNum = getValueFromInput("cashout-number").trim();
+    const amountStr = getValueFromInput("cashout-amount").trim();
+    const pin = getValueFromInput("cashout-pin").trim();
+
+    if (!agentNum || !amountStr || !pin) {
+        return showToast("Please fill in all fields.", "error");
+    }
+    if (agentNum.length !== 11 || pin.length !== 4) {
+        return showToast("Agent number must be 11 digits, Pin must be 4 digits.", "error");
+    }
+    const amount = parseFloat(amountStr);
+    const currentBalance = getBalance();
+    if (isNaN(amount) || amount <= 0) return showToast("Enter a valid amount.", "error");
+    if (amount > currentBalance) return showToast("Insufficient balance!", "error");
+    if (pin !== "1234") return showToast("Invalid Pin!", "error");
+
+    setBalance(currentBalance - amount);
+    addTransaction({ type: "cashout", label: `Cashout to ${agentNum}`, amount, sign: "-" });
+    showToast(`৳${amount} cashed out successfully!`);
+
+    document.getElementById("cashout-amount").value = "";
+    document.getElementById("cashout-pin").value = "";
+});
