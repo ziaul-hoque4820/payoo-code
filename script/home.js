@@ -180,3 +180,33 @@ document.getElementById("get-cupon-btn").addEventListener("click", (e) => {
 
     document.getElementById("bonus-cuopn").value = "";
 });
+
+// ─── Pay Bill ─────────────────────────────────────────────────
+document.getElementById("pay-bill-btn").addEventListener("click", (e) => {
+    e.preventDefault();
+    const billType = getValueFromInput("pay-bill-target");
+    const billNum = getValueFromInput("pay-bill-number").trim();
+    const amountStr = getValueFromInput("pay-bill-amount").trim();
+    const pin = getValueFromInput("pay-bill-pin").trim();
+
+    if (billType === "Select bill type" || !billNum || !amountStr || !pin) {
+        return showToast("Please fill in all fields.", "error");
+    }
+    if (billNum.length !== 11 || pin.length !== 4) {
+        return showToast("Account must be 11 digits, Pin must be 4 digits.", "error");
+    }
+    const amount = parseFloat(amountStr);
+    const currentBalance = getBalance();
+    if (isNaN(amount) || amount <= 0) return showToast("Enter a valid amount.", "error");
+    if (amount > currentBalance) return showToast("Insufficient balance!", "error");
+    if (pin !== "1234") return showToast("Invalid Pin!", "error");
+
+    setBalance(currentBalance - amount);
+    addTransaction({ type: "paybill", label: `${billType} Bill`, amount, sign: "-" });
+    showToast(`৳${amount} paid for ${billType} bill!`);
+
+    document.getElementById("pay-bill-number").value = "";
+    document.getElementById("pay-bill-amount").value = "";
+    document.getElementById("pay-bill-pin").value = "";
+    document.getElementById("pay-bill-target").selectedIndex = 0;
+});
